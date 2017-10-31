@@ -4,7 +4,7 @@
   become: yes
   become_user: isucon
   tasks:
-    - copy: src=../../../bench/isucon6q/ dest=/home/isucon/isucon6q/
+    - copy: src=/tmp/go/src/github.com/isucon/bench/isucon6q/ dest=/home/isucon/isucon6q/
     - file: path=/home/isucon/isucon6q/isucon6q-bench-worker mode=0755
     - file: path=/home/isucon/isucon6q/isucon6q-bench mode=0755
 
@@ -13,6 +13,6 @@
   become: yes
   tasks:
     - name: bench (systemd)
-      copy: src=../files/isucon6-bench-worker.service  dest=/etc/systemd/system/bench.service owner=root mode=644
+      copy: src=../files/bench.service  dest=/etc/systemd/system/bench.service owner=root mode=644
     - name: enable bench worker
       service: name=bench state=running enabled=true
