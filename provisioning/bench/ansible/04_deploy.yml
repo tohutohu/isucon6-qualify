@@ -4,7 +4,7 @@
   become: yes
   become_user: isucon
   tasks:
-    - copy: src=/tmp/go/src/github.com/isucon/bench/isucon6q/ dest=/home/isucon/isucon6q/
+    - copy: src=/tmp/go/src/github.com/isucon/isucon6-qualify/bench/isucon6q/ dest=/home/isucon/isucon6q/
     - file: path=/home/isucon/isucon6q/isucon6q-bench-worker mode=0755
     - file: path=/home/isucon/isucon6q/isucon6q-bench mode=0755
 
