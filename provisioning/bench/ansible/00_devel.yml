@@ -12,3 +12,5 @@
         - build-essential
         - libmysqlclient-dev
         - libssl-dev
+    - shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+    - apt: nodejs

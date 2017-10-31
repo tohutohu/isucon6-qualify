@@ -7,9 +7,9 @@
     - dev
   tasks:
     - synchronize: src=../../../webapp/ dest=/home/isucon/webapp owner=no group=no links=yes
-    - synchronize: src=../../../bin/ dest=/home/isucon/bin owner=no group=no
     - synchronize: src=../files/env.sh dest=/home/isucon/env.sh owner=no group=no
     - file: path=/home/isucon owner=isucon group=isucon state=directory recurse=yes
+    - file: path=/home/isucon/bin owner=isucon group=isucon state=directory recurse=yes
       become_user: root
     - name: perl
       shell: PATH=/home/isucon/.local/perl/bin:$PATH carton install --deployment
@@ -48,22 +48,8 @@
       copy: src=../files/isuda.php-fpm.conf  dest=/home/isucon/.local/php/etc/isuda.php-fpm.conf  owner=isucon group=isucon mode=644
     - name: php-fpm (isutar)
       copy: src=../files/isutar.php-fpm.conf dest=/home/isucon/.local/php/etc/isutar.php-fpm.conf owner=isucon group=isucon mode=644
-
-- hosts: all
-  gather_facts: no
-  become: yes
-  tags:
-    - prod
-  tasks:
-    - copy: src=../../../bin/ dest=/home/isucon/bin owner=isucon group=isucon mode=755
-    - copy: src=../files/env.sh dest=/home/isucon/env.sh owner=isucon group=isucon mode=755
-    - unarchive:
-        copy=no
-        src=https://isucon6qimage.example.com/isucon6q/webapp.tar.gz
-        dest=/home/isucon/
-        creates=/home/isucon/webapp
-        owner=isucon
-        group=isucon
+    - name: copy isupam
+      copy: src=../../../webapp/bin/isupam_linux dest=/home/isucon/bin/isupam owner=isucon group=isucon mode=777
 
 - hosts: all
   gather_facts: no

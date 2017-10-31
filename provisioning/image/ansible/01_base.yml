@@ -6,7 +6,7 @@
     - always
   tasks:
     - group: name=isucon
-    - user: name=isucon groups=isucon
+    - user: name=isucon groups=isucon password=$1$cocoro$5tYtd/amwIBM2R51eMznW0
     - file: path=/home/isucon owner=isucon group=isucon mode=755 state=directory
     - copy: src=/usr/share/zoneinfo/Asia/Tokyo dest=/etc/localtime follow=yes remote_src=True
     - name: set timezone
