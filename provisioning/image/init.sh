@@ -1,6 +1,7 @@
 #!/bin/sh
 # init script for isucon6-qualifier
 
+sudo su root
 set -ex
 
 export DEBIAN_FRONTEND=noninteractive
