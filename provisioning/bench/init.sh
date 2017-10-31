@@ -26,7 +26,11 @@ cd /tmp/isucon6-qualifier/provisioning/bench
 PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook -i localhost, ansible/*.yml --connection=local
 cd /tmp && sudo rm -rf /tmp/isucon6-qualifier
 
-git clone https://github.com/tohutohu/isucon-bench.git /home/isucon/isucon-bench
+if ! test -e /home/isucon/isucon-bench; then
+  git clone https://github.com/tohutohu/isucon-bench.git /home/isucon/isucon-bench
+fi
 cd /home/isucon/isucon-bench
+git fetch
+git reset --hard origin/master
 /usr/bin/npm install
 sudo systemctl restart bench
